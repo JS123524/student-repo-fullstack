@@ -27,7 +27,7 @@ Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13"
 
 **/
 
-function fizzBuzz(n) {
+const fizzBuzz = function fizzBuzz(n) {
   const answer = [];
 
   for (let i = 1; i <= n; i += 1) {
@@ -43,7 +43,7 @@ function fizzBuzz(n) {
   }
 
   return answer;
-}
+};
 
 console.log(fizzBuzz(3));
 console.log(fizzBuzz(5));
