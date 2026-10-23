@@ -21,13 +21,41 @@ const routes = [
   'other',
 ];
 
-app.get('/', (req, res) => {
+app.get(`/${routes[0]}`, (req, res) => {
   res.status(200);
-  res.set({ 'Content-Type': 'text/html' });
-  res.send('Express Routing Exercise');
+  res.type('html');
+  res.send('<h1>Welcome!</h1>');
 });
 
-// Add your code here
+app.get(`/${routes[1]}`, (req, res) => {
+  res.redirect(302, `/${routes[2]}`);
+});
+
+app.get(`/${routes[2]}`, (req, res) => {
+  res.status(200);
+  res.type('html');
+  res.send('<h1>Redirected!</h1>');
+});
+
+app.get(`/${routes[3]}`, (req, res) => {
+  res.status(200);
+  res.type('html');
+  res.set('Cache-Control', 'public, max-age=86400');
+  res.send('this resource was cached');
+});
+
+app.get(`/${routes[4]}`, (req, res) => {
+  res.status(200);
+  res.type('text');
+  res.cookie('hello', 'world');
+  res.send('cookies… yummm');
+});
+
+app.use((req, res) => {
+  res.status(404);
+  res.type('html');
+  res.send('404 - page not found');
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
