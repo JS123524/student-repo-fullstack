@@ -9,6 +9,7 @@ const port = process.env.PORT || 5001;
 // http://localhost:5001/submit should return all the data the user entered
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.redirect('/form');
@@ -17,10 +18,6 @@ app.get('/', (req, res) => {
 app.get('/form', (req, res) => {
   res.status(200);
   res.sendFile(path.join(__dirname, '04-form.html'));
-});
-
-app.get('/style.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '04-form-style.css'));
 });
 
 app.post('/submit', (req, res) => {

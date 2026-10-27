@@ -12,49 +12,32 @@ const port = process.env.PORT || 5001;
 
 // For other routes, such as http://localhost:5001/other, this exercise should return a status code 404 with '404 - page not found' in html format
 
-const routes = [
-  'welcome',
-  'redirect',
-  'redirected',
-  'cache',
-  'cookie',
-  'other',
-];
-
-app.get(`/${routes[0]}`, (req, res) => {
-  res.status(200);
-  res.type('html');
-  res.send('<h1>Welcome!</h1>');
+app.get('/welcome', (req, res) => {
+  res.status(200).type('html').send('<h1>Welcome!</h1>');
 });
 
-app.get(`/${routes[1]}`, (req, res) => {
-  res.redirect(302, `/${routes[2]}`);
+app.get('/redirect', (req, res) => {
+  res.redirect(302, '/redirected');
 });
 
-app.get(`/${routes[2]}`, (req, res) => {
-  res.status(200);
-  res.type('html');
-  res.send('<h1>Redirected!</h1>');
+app.get('/redirected', (req, res) => {
+  res.status(200).type('html').send('<h1>Redirected!</h1>');
 });
 
-app.get(`/${routes[3]}`, (req, res) => {
-  res.status(200);
-  res.type('html');
-  res.set('Cache-Control', 'public, max-age=86400');
-  res.send('this resource was cached');
+app.get('/cache', (req, res) => {
+  res
+    .status(200)
+    .type('html')
+    .set('Cache-Control', 'public, max-age=86400')
+    .send('this resource was cached');
 });
 
-app.get(`/${routes[4]}`, (req, res) => {
-  res.status(200);
-  res.type('text');
-  res.cookie('hello', 'world');
-  res.send('cookies… yummm');
+app.get('/cookie', (req, res) => {
+  res.status(200).type('text').cookie('hello', 'world').send('cookies… yummm');
 });
 
 app.use((req, res) => {
-  res.status(404);
-  res.type('html');
-  res.send('404 - page not found');
+  res.status(404).type('html').send('404 - page not found');
 });
 
 app.listen(port, () => {

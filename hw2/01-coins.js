@@ -3,15 +3,15 @@
 // Add your function here
 const calculateChange = function calculateChange(n) {
   if (n < 0) {
-    return 'Error: the number cannot be negative';
+    return `$${n} ==> Error: the number cannot be negative`;
   }
 
   if (n === 0) {
-    return '0 pennies';
+    return `$${n} ==> 0 pennies`;
   }
 
   if (n > 100) {
-    return 'Error: the number is too large';
+    return `$${n} ==> Error: the number is too large`;
   }
 
   const denominations = [
@@ -36,7 +36,7 @@ const calculateChange = function calculateChange(n) {
     }
   });
 
-  return change.join(', ');
+  return `$${n} ==> ${change.join(', ')}`;
 };
 
 // Sample test cases

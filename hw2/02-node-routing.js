@@ -12,7 +12,18 @@ const port = process.env.PORT || 5001;
 // For other routes, such as http://localhost:5001/other, this exercise should return a status code 404 with '404 - page not found' in html format
 
 const server = http.createServer((req, res) => {
-  switch (req.url) {
+  if (req.method !== 'GET') {
+    res.writeHead(405, {
+      'Content-Type': 'text/html',
+      Allow: 'GET',
+    });
+    res.end('<h1>405 - Method Not Allowed</h1>');
+    return;
+  }
+
+  const url = new URL(req.url, `http://${req.headers.host}`);
+
+  switch (url.pathname) {
     case '/welcome':
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.end('<h1>Welcome!</h1>');
