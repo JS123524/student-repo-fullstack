@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+nav a {
+  color: blue;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  background-color: rgb(223, 223, 223);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.character-grid,
+.species-grid,
+.location-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.character-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+.species-grid,
+.location-grid {
+  margin-top: 20px;
+}
+
+.species-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.location-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.character-card,
+.species-group,
+.location-card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.character-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.character-card h3 {
+  margin: 12px 0;
+}
+
+.character-card p {
+  margin: 6px 0;
+}
+
+.species-group h3,
+.location-card h3 {
+  margin-top: 0;
+}
+
+.species-group ul {
+  padding-left: 20px;
+}
+
+.species-group li {
+  margin-bottom: 6px;
+  overflow-wrap: anywhere;
+}
+
+.location-card p {
+  margin-bottom: 0;
+}
