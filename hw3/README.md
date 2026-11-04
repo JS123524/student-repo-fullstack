@@ -42,6 +42,31 @@ Open `http://localhost:3000` in your browser.
 
 Open multiple browser tabs to test real-time messaging between clients.
 
+## Exercise: Rick and Morty API
+
+- Built a React application using the [Rick and Morty API](https://rickandmortyapi.com/api/).
+- Used React Router to implement four routes:
+  - `/home` - Displays a welcome message and navigation links.
+  - `/characters` - Displays the first 100 characters with their names, images, species, and status.
+  - `/species` - Groups all characters by species, showing the character count and names for each species.
+  - `/locations` - Groups all locations by type and displays the count for each type.
+- Used the Fetch API to retrieve paginated data.
+- Added loading states, error handling, and fallback values for missing data.
+
+### How to Run
+
+From the repository root:
+
+```bash
+cd hw3/rickandmorty
+npm ci
+npm run dev
+```
+
+Open the local URL displayed in the terminal.
+
+Use the navigation links to explore the four routes.
+
 ## Notes
 
 - Each project includes its own `package.json` and `package-lock.json`.
