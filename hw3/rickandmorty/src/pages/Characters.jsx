@@ -49,23 +49,27 @@ const Characters = function Characters() {
       {characters.length === 0 && <p>No characters found.</p>}
 
       <div className="character-grid">
-        {characters.map((character) => (
-          <article className="character-card" key={character.id}>
-            {character.image ? (
-              <img
-                src={character.image}
-                alt={character.name?.trim() || 'Unknown character'}
-                loading="lazy"
-              />
-            ) : (
-              <p>No image available</p>
-            )}
+        {characters.map((character) => {
+          const { id, image, name, species, status } = character;
+        
+          return (
+            <article className="character-card" key={id}>
+              {image ? (
+                <img
+                  src={image}
+                  alt={name?.trim() || 'Unknown character'}
+                  loading="lazy"
+                />
+              ) : (
+                <p>No image available</p>
+              )}
 
-            <h3>{character.name?.trim() || 'Unknown'}</h3>
-            <p>Species: {character.species?.trim() || 'Unknown'}</p>
-            <p>Status: {character.status?.trim() || 'Unknown'}</p>
-          </article>
-        ))}
+              <h3>{name?.trim() || 'Unknown'}</h3>
+              <p>Species: {species?.trim() || 'Unknown'}</p>
+              <p>Status: {status?.trim() || 'Unknown'}</p>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
